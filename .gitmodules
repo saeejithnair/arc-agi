@@ -1,0 +1,6 @@
+[submodule "third_party/arckit"]
+	path = third_party/arckit
+	url = https://github.com/mxbi/arckit.git
+[submodule "third_party/arcle"]
+	path = third_party/arcle
+	url = https://github.com/ConfeitoHS/arcle.git
