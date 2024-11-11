@@ -11,12 +11,10 @@ libc = { family="glibc", version="2.30" }
 # || operator in pixi allows running a command after only if the command before || fails
 uv-install = "python -m pip install uv"
 make-third_party-dir = {cmd="ls third_party || mkdir third_party"}
-clone-arckit = {cmd="ls arckit || git clone --recursive https://github.com/mxbi/arckit.git", cwd = "third_party", depends_on=["make-third_party-dir"] }
-clone-arcle = {cmd="ls arcle || git clone --recursive https://github.com/ConfeitoHS/arcle.git", cwd = "third_party", depends_on=["make-third_party-dir"] }
 
 arcle-install = {cmd="python -c 'import arcle' || python -m uv pip install arcle", depends_on=["uv-install"]}
 arckit-install = {cmd="python -c 'import arckit' || python -m uv pip install arckit", depends_on=["uv-install"]}
-post-install = {cmd="pwd", depends_on=["arcle-install", "arckit-install", "clone-arckit", "clone-arcle"]}
+post-install = {cmd="pwd", depends_on=["arcle-install", "arckit-install"]}
 
 
 [dependencies]
@@ -29,5 +27,16 @@ torchvision = {version = ">=0.17.0,<0.18", channel="pytorch"}
 pyarrow = ">=15.0.2,<15.1"
 numpy = "<2.0.0"
 
-
 [pypi-dependencies]
+drawsvg = { version = "*", extras = ["all"] }
+wandb= { version = "<=0.17.0"}
+ray = { version = "<=2.31.0", extras = ["tune"]}
+dm_tree = { version = "*"}
+pandas = { version = "*"}
+typer = { version = "*"}
+scikit-image = { version = "*"}
+opencv-python = { version = "*"}
+gymnasium = { version = "==0.28.0"}
+lz4 = { version = "*"}
+higher = { version = "*"}
+gputil = { version = "*"}
